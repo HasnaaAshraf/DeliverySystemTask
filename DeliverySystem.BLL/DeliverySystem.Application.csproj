@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DeliverySystem.DAL\DeliverySystem.DAL.csproj" />
-  </ItemGroup>
-
 </Project>

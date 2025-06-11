@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeliverySystem.BLL.Services
+namespace DeliverySystem.DAL.Models
 {
-    internal class ProductService
+    public enum ProductType
     {
+        InStock,
+        Fresh,
+        External
     }
 }
