@@ -7,27 +7,26 @@ using DeliverySystem.Application.Interfaces;
 
 namespace DeliverySystem.Application.ProductSlotStrategies
 {
-    public class ExternalProductSlot : ProductSlotBase
+    public class ExternalProductSlot(DateTime requestTime) : ProductSlotBase(requestTime)
     {
-       
         protected override DateTime GetStartDay()
         {
+            DateTime StartDeliveryDay = _requestTime.Date.AddDays(3);
 
-            DateTime StartDeliveryDay = DateTime.Now.AddDays(3);
-
-            // Skip Saturday, Sunday, Monday => For Only External Products 
+            // Skip Saturday, Sunday, Monday
             while (StartDeliveryDay.DayOfWeek == DayOfWeek.Saturday ||
-                  StartDeliveryDay.DayOfWeek == DayOfWeek.Sunday ||
-                  StartDeliveryDay.DayOfWeek == DayOfWeek.Monday)
+                   StartDeliveryDay.DayOfWeek == DayOfWeek.Sunday ||
+                   StartDeliveryDay.DayOfWeek == DayOfWeek.Monday)
             {
                 StartDeliveryDay = StartDeliveryDay.AddDays(1);
             }
+
             return StartDeliveryDay;
         }
 
         protected override bool IsDeliveryDay(DateTime day)
         {
-            // Tuesday Or After That And Friday Or Before 
+            // Checking if that day from Tuesday to Friday or not
             return day.DayOfWeek >= DayOfWeek.Tuesday && day.DayOfWeek <= DayOfWeek.Friday;
         }
     }

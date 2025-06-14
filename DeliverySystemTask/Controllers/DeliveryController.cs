@@ -16,14 +16,15 @@ namespace DeliverySystemTask.Controllers
         [HttpPost("slots")]
         public ActionResult<List<DeliveryDto>> GetDeliverySlots([FromBody] DeliveryRequestDto request)
         {
-            if (request == null || request.productDto == null || request.productDto.Count == 0)
+            if (request == null || request.ProductDto == null || request.ProductDto.Count == 0)
             {
                 return BadRequest(" Invalid Request Data .....");
             }
 
-            var slots = _deliveryService.GetDeliverySlots(request.productDto, request.time, request.productType);
+            var slots = _deliveryService.GetDeliverySlots(request.ProductDto, request.Time);
 
             return Ok(slots);
         }
+   
     }
 }

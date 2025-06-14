@@ -10,7 +10,6 @@ namespace DeliverySystem.BLL.Interfaces
 {
     public interface IDeliveryService 
     {
-        List<DeliveryDto> GetDeliverySlots(List<ProductDto> productDtos, DateTime time,ProductType productType);
-      
+        List<DeliveryDto> GetDeliverySlots(List<ProductDto> productDtos, DateTime time);
     }
 }

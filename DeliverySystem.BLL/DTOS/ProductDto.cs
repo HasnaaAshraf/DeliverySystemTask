@@ -4,8 +4,7 @@ namespace DeliverySystemTask.DTOS
 {
     public class ProductDto
     {
-        private string Name { get; set; }
-
-        private ProductType Type { get; set; }
+        public int Quantity { get; set; }
+        public ProductType ProductType { get; set; }
     }
 }

@@ -7,16 +7,20 @@ using DeliverySystem.Application.Interfaces;
 
 namespace DeliverySystem.Application.ProductSlotStrategies
 {
-    public class FreshProductSlot : ProductSlotBase
+    public class FreshProductSlot(DateTime requestTime) : ProductSlotBase(requestTime)
     {
         protected override DateTime GetStartDay()
         {
-            return DateTime.Now.AddDays(1);
+            // Eligible for same day delivery if ordered before 12:00.
+            return _requestTime.Hour < 12
+                ? _requestTime.Date
+                : _requestTime.Date.AddDays(1);
         }
 
         protected override bool IsDeliveryDay(DateTime day)
         {
-            return day.DayOfWeek != DayOfWeek.Sunday &&
+            // Checking if that day from Monday to Friday or not
+            return day.DayOfWeek != DayOfWeek.Saturday &&
                    day.DayOfWeek != DayOfWeek.Sunday;
         }
     }

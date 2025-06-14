@@ -10,8 +10,7 @@ namespace DeliverySystem.Application.DTOS
 {
     public class DeliveryRequestDto
     {
-        public List<ProductDto> productDto { get; set; }
-        public DateTime time { get; set; }
-        public ProductType productType { get; set; }
+        public List<ProductDto>? ProductDto { get; set; }
+        public DateTime Time { get; set; }
     }
 }
